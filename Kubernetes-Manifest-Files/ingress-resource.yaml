@@ -1,24 +1,3 @@
-  apiVersion: networking.k8s.io/v1
-  kind: Ingress
-  metadata:
-    name: jenkins-ingress
-    namespace: devops-tools
-  spec:
-    ingressClassName: nginx
-    rules:
-      - host: jenkins.michaelajala.top
-        http:
-          paths:
-            - pathType: Prefix
-              backend:
-                service:
-                  name: jenkins
-                  port:
-                    number: 8080
-              path: /
-
----
-
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
