@@ -4,22 +4,22 @@ metadata:
   name: frontend
   namespace: cda
   labels:
-    role: frontend
-spec: 
-  replicas: 1
+    app: frontend
+spec:
+  replicas: 2
   strategy:
     type: RollingUpdate
     rollingUpdate:
       maxSurge: 1
       maxUnavailable: 25%
   selector:
-    matchLabels: 
-      role: frontend
+    matchLabels:
+      app: frontend
   template:
     metadata:
       labels:
-        role: frontend
-    spec: 
+        app: frontend
+    spec:
       imagePullSecrets:
       - name: ecr-registry-secret
       containers:
@@ -27,7 +27,7 @@ spec:
         image: 058264381564.dkr.ecr.us-east-1.amazonaws.com/frontend:1
         imagePullPolicy: Always
         env:
-          - name: ASPNETCORE_ENVIRONMENT
-            value: "http://frontend.michaelajala.top"
+        - name: ASPNETCORE_ENVIRONMENT
+          value: "dev"
         ports:
         - containerPort: 80

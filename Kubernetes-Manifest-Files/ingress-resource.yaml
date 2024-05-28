@@ -22,23 +22,6 @@ spec:
 
 ---
 
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: frontend-ingress
-  namespace: cda
-  annotations:
-    ingress.kubernetes.io/rewrite-target: /
-spec:
-  ingressclassName: nginx
-  rules: 
-  - host: frontend.michaelajala.top
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend: 
-          service: 
-            name: frontend-service
-            port: 
-              number: 80
+
+
+
