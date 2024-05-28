@@ -24,7 +24,7 @@ spec:
       - name: ecr-registry-secret
       containers:
       - name: backend
-        image: 058264381564.dkr.ecr.us-east-1.amazonaws.com/backend:8
+        image: 058264381564.dkr.ecr.us-east-1.amazonaws.com/backend:1
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
