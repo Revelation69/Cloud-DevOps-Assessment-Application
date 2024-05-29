@@ -24,14 +24,25 @@ spec:
       - name: ecr-registry-secret
       containers:
       - name: backend
-        image: 058264381564.dkr.ecr.us-east-1.amazonaws.com/backend:2
+        image: 058264381564.dkr.ecr.us-east-1.amazonaws.com/backend:8
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
         env:
         - name: SPRING_DATASOURCE_URL
-          value: jdbc:mysql://database1.c90qymuqihz4.us-east-1.rds.amazonaws.com:3306/demodb
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: url
         - name: SPRING_DATASOURCE_USERNAME
-          value: admin
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: username
         - name: SPRING_DATASOURCE_PASSWORD
-          value: devops123
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: password
+
+
